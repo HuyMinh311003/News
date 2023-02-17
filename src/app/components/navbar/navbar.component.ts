@@ -1,20 +1,26 @@
-import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  constructor (public authService: AuthService, private router: Router) {}
+export class NavbarComponent implements OnInit{
+  constructor (private authService: AuthService) {}
 
-  user:any;
-
-  show() {
-    this.user = this.authService.people;
+  ngOnInit(): void {
+    this.user$ = this.authService.user$;
+    this.user$.subscribe(user => {
+      this.user = user;
+      console.log(user);
+    })
   }
+
+  user!: User | null;
+  user$ = new Observable<User | null>;
 
   login() {
     this.authService.loginWithGoogle();

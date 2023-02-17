@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, User } from '@angular/fire/auth';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  people:any;
+
+export class AuthService{
+
+  user!: User | null;
+  user$ = new Subject<User | null>;
+
   constructor(public auth: Auth) {
     onAuthStateChanged(this.auth, (user)=>{
-    if(user != null) {
-      this.people = user;
-    }
-    else {
-      this.people = null;
-    }
+      if(user) {
+        this.user = user;
+        this.user$.next(this.user);
+      }
+      else {
+        this.user = null;
+        this.user$.next(this.user);
+      }
     })
   }
 
@@ -23,6 +30,8 @@ export class AuthService {
   }
 
   logout() {
-    this.auth.signOut();
+    this.auth.signOut().then(() => {
+      window.location.reload();
+    });
   }
 }

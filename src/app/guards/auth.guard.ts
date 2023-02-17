@@ -1,6 +1,5 @@
 import { AuthService } from 'src/app/services/auth.service';
 import { Injectable } from '@angular/core';
-import { onAuthStateChanged } from '@angular/fire/auth';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -13,19 +12,14 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
     return new Promise((resolve, reject) =>{
-      onAuthStateChanged(this.authService.auth,(user)=>{
-        if(user != null){
+        if(this.authService.user) {
           resolve(true);
-          this.user = user;
-        }
-        else{
-          window.alert('Bạn chưa đăng nhập');
+        } else {
           resolve(false);
-          this.user = null;
-          this.router.navigate(['']);
+          this.router.navigate([''])
         }
-      })
     });
   }
 }
