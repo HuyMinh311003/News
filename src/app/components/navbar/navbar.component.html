@@ -1,0 +1,21 @@
+<mat-toolbar id="toolbar" color="primary">
+  <button mat-icon-button class="icon" aria-label="">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>24H HOT NEWS</span>
+  <form class="input_container">
+    <mat-form-field class="input">
+      <mat-label>Tìm kiếm</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </form>
+  <div>
+    <button mat-button id="logout_btn" (click)="logout()" *ngIf= "this.authService.people">Đăng xuất</button>
+    <button mat-button id="login_btn" (click)="login()" *ngIf= "!this.authService.people">Đăng nhập</button>
+  </div>
+  <div *ngIf= "this.authService.people">{{this.authService.people.displayName}}</div>
+  <img id="image" *ngIf= "this.authService.people" [src]="this.authService.people.photoURL" alt="">
+  <button [routerLink]="['home']" mat-icon-button class="icon" aria-label="">
+    <mat-icon>home</mat-icon>
+  </button>
+</mat-toolbar>

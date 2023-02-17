@@ -1,0 +1,9 @@
+<div id="new_container">
+  <div *ngFor="let item of (news$ | async)">
+    <div>{{item.title}}</div>
+    <div>{{item.description}}</div>
+    <div>{{item.slug}}</div>
+    <div>{{item.path}}</div>
+    <div>{{item.url}}</div>
+  </div>
+</div>
