@@ -20,3 +20,13 @@
 #login_btn:hover, #logout_btn:hover, .icon:hover {
   background-color: green;
 }
+
+#img_container {
+  display: flex;
+  justify-content: center;
+}
+
+#img {
+  padding: 1%;
+  width: 100%;
+}

@@ -11,6 +11,7 @@
   flex-direction: column;
   border-style: solid;
   border-width: thin;
+  border-radius: 2%;
 }
 
 .text {
@@ -18,9 +19,9 @@
   margin: 0px 0px 20px 20px;
 }
 
-#image {
-  margin: 10px;
-  padding: 1%;
+#image_container {
+  display: flex;
+  justify-content: center;
 }
 
 #profile {
