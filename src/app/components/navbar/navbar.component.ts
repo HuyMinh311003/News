@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -7,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor (public authService: AuthService) {}
+  constructor (public authService: AuthService, private router: Router) {}
 
   user:any;
 
@@ -16,9 +17,7 @@ export class NavbarComponent {
   }
 
   login() {
-    this.authService.loginWithGoogle().then((res)=>{
-      console.log(res);
-    });
+    this.authService.loginWithGoogle();
   }
 
   logout() {
