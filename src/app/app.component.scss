@@ -21,12 +21,17 @@
   background-color: green;
 }
 
-#img_container {
+#text_container {
+  padding-top: 5%;
+  margin: 50px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
-#img {
-  padding: 1%;
-  width: 100%;
+.text {
+  display: flex;
+  align-self: center;
+  margin: 50px;
+  font-size: 30px;
 }
