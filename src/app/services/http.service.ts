@@ -8,8 +8,8 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
 
+export class HttpService {
   constructor(private httpClient: HttpClient) { }
 
   get() {

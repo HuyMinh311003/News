@@ -2,8 +2,10 @@
 
 <router-outlet></router-outlet>
 
-<div id="text_container">
-  <div class="text">CHÀO MỪNG BẠN ĐẾN VỚI 24H HOT NEWS</div>
-  <div *ngIf="!(user$ | async)" class="text">HÃY ĐĂNG NHẬP ĐỂ XEM TIN TỨC</div>
-  <div *ngIf="(user$ | async)" class="text">BẠN ĐÃ ĐĂNG NHẬP, BẤM VÀO NÚT HOME ĐỂ XEM TIN TỨC</div>
+<div id="text_box">
+  <div id="text_container">
+    <div class="text">CHÀO MỪNG BẠN ĐẾN VỚI 24H HOT NEWS</div>
+    <div *ngIf="!(user$ | async)" class="text">HÃY ĐĂNG NHẬP ĐỂ XEM TIN TỨC</div>
+    <div *ngIf="(user$ | async)" class="text">BẠN ĐÃ ĐĂNG NHẬP, BẤM VÀO NÚT HOME ĐỂ XEM TIN TỨC</div>
+  </div>
 </div>

@@ -1,9 +1,10 @@
-import { HttpService } from 'src/app/services/http.service';
 import { Component, OnInit } from '@angular/core';
 
-import { News } from 'src/app/models/news.model';
-
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { NewsState } from 'src/states/news.state';
+import * as NewsActions from 'src/actions/news.action';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +12,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  constructor (private httpService: HttpService) { }
-  news$ = new Observable<News[]>();
+  currentPage = 1;
+  news$ = new Observable<NewsState>();
+
+  constructor (private store: Store<{news: NewsState}>) {
+    this.news$ = this.store.select('news');
+  }
+
+  getNewsPage() {
+    this.currentPage += 1;
+    this.store.dispatch(NewsActions.getPaginate({page: this.currentPage, per_page: 10}));
+  }
+
+  getPreviousPage() {
+    this.currentPage -= 1;
+    this.store.dispatch(NewsActions.getPaginate({page: this.currentPage, per_page: 10}));
+  }
+
+  getNews() {
+    this.store.dispatch(NewsActions.getPaginate({page: 1, per_page: 10}));
+  }
 
   ngOnInit(): void {
-    this.news$ = this.httpService.get();
+    this.getNews();
   }
 }

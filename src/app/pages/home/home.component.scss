@@ -9,9 +9,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border-style: solid;
-  border-width: thin;
-  box-shadow: 3px 3px #888888;
+  border-radius: 15px;
+  background-color: white;
 }
 
 .text {
@@ -43,4 +42,45 @@
   margin: 0px 0px 10px 30px;
   width: 5%;
   border-radius: 50%;
+}
+
+//Page
+#footer {
+  display: flex;
+  justify-content: center;
+}
+
+#page {
+  display: flex;
+  justify-content: center;
+  width: 5%
+}
+
+#pageNum {
+  margin: 15px 15px 15px 30px;
+  width: 50%;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#page_btn_container {
+  width: 95%;
+  border-radius: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-weight: 500;
+}
+
+.page_btn {
+  margin: 0px 30px;
+}
+
+.page_btn:hover {
+  background-color: crimson ;
+}
+
+.page_btn:active {
+  background-color: rgb(175, 18, 49);
 }

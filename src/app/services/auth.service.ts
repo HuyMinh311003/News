@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
 })
 
 export class AuthService{
-
   user!: User | null;
   user$ = new Subject<User | null>;
 
